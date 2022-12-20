@@ -37,15 +37,13 @@ export class LevelsService {
   }
 
   remove(id: string) {
-    const currentDate = JSON.stringify(new Date());
-
     return this.levelModel.findByIdAndUpdate(
       {
         _id: id,
       },
       {
         $set: {
-          deleted_at: currentDate,
+          deleted_at: new Date(),
         },
       },
       {
