@@ -1,15 +1,11 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+const cors = require('cors');
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
-  // DISABLED CORS
-  app.use((_, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    next();
-  });
-
+  app.use(cors());
   await app.listen(3333);
 }
 bootstrap();
