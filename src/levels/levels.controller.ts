@@ -18,13 +18,8 @@ export class LevelsController {
   constructor(private readonly levelsService: LevelsService) {}
 
   @Post()
-  create(@Body() createLevelDto: CreateLevelDto, @Res() res) {
-    return this.levelsService.create(createLevelDto).catch((error) =>
-      res.status(400).json({
-        message: 'Could not create this level',
-        error,
-      }),
-    );
+  create(@Body() createLevelDto: CreateLevelDto) {
+    return this.levelsService.create(createLevelDto);
   }
 
   @Get()
@@ -75,16 +70,8 @@ export class LevelsController {
   async update(
     @Param('id') id: string,
     @Body() updateLevelDto: UpdateLevelDto,
-    @Res() res,
   ) {
-    try {
-      await this.levelsService.update(id, updateLevelDto);
-    } catch (error) {
-      return res.status(400).json({
-        message: 'Could not update this level',
-        error,
-      });
-    }
+    return this.levelsService.update(id, updateLevelDto);
   }
 
   @Delete(':id')
