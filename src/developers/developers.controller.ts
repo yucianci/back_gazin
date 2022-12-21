@@ -31,13 +31,7 @@ export class DevelopersController {
 
     if (search) {
       options = {
-        $or: [
-          { name: new RegExp(search.toString(), 'i') },
-          { level: new RegExp(search.toString(), 'i') },
-          { sex: new RegExp(search.toString(), 'i') },
-          { birthday: new RegExp(search.toString(), 'i') },
-          { age: new RegExp(search.toString(), 'i') },
-        ],
+        $or: [{ name: new RegExp(search.toString(), 'i') }],
       };
     }
 
