@@ -65,14 +65,8 @@ export class DevelopersController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string, @Res() res) {
-    try {
-      await this.developersService.findOne(id);
-    } catch (error) {
-      return res.status(404).json({
-        message: `${id} this level not found`,
-      });
-    }
+  findOne(@Param('id') id: string) {
+    return this.developersService.findOne(id);
   }
 
   @Patch(':id')

@@ -7,4 +7,5 @@ export class CreateDeveloperDto {
   birthday: string;
   age: number;
   hobby: string;
+  deleted_at: string | null;
 }

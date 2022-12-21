@@ -56,21 +56,12 @@ export class LevelsController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string, @Res() res) {
-    try {
-      await this.levelsService.findOne(id);
-    } catch (error) {
-      return res.status(404).json({
-        message: `${id} this level not found`,
-      });
-    }
+  findOne(@Param('id') id: string) {
+    return this.levelsService.findOne(id);
   }
 
   @Patch(':id')
-  async update(
-    @Param('id') id: string,
-    @Body() updateLevelDto: UpdateLevelDto,
-  ) {
+  update(@Param('id') id: string, @Body() updateLevelDto: UpdateLevelDto) {
     return this.levelsService.update(id, updateLevelDto);
   }
 

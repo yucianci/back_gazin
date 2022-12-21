@@ -28,4 +28,4 @@ export class Developer {
   deleted_at: string | null;
 }
 
-export const LevelSchema = SchemaFactory.createForClass(Developer);
+export const DeveloperSchema = SchemaFactory.createForClass(Developer);
