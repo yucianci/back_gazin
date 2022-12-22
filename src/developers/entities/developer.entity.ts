@@ -21,9 +21,6 @@ export class Developer {
   sex: SexProps;
 
   @Prop()
-  birthday: string;
-
-  @Prop()
   age: number;
 
   @Prop()
