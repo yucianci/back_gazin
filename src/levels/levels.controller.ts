@@ -42,17 +42,24 @@ export class LevelsController {
       });
     }
 
-    const page: number = parseInt(req.query?.page) || 1;
-    const limit: number = parseInt(req.query?.limit) || 10;
-    const total = await this.levelsService.count(options);
-    const lastPage = Math.ceil(total / limit);
+    let levels;
 
-    const levels = await query
-      .skip((page - 1) * limit)
-      .limit(limit)
-      .exec();
+    if (req.query?.page && req.query?.limit) {
+      const page: number = parseInt(req.query?.page) || 1;
+      const limit: number = parseInt(req.query?.limit) || 10;
+      const total = await this.levelsService.count(options);
+      const lastPage = Math.ceil(total / limit);
 
-    return { levels, total, page, lastPage };
+      levels = await query
+        .skip((page - 1) * limit)
+        .limit(limit)
+        .exec();
+
+      return { levels, total, page, lastPage };
+    }
+    levels = await query.exec();
+
+    return { levels };
   }
 
   @Get(':id')

@@ -1,9 +1,10 @@
 import { Level } from 'src/levels/entities/level.entity';
+import { SexProps } from '../entities/developer.entity';
 
 export class CreateDeveloperDto {
   name: string;
   level: Level;
-  sex: string;
+  sex: SexProps;
   birthday: string;
   age: number;
   hobby: string;

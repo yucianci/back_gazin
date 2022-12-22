@@ -4,6 +4,11 @@ import { Level } from 'src/levels/entities/level.entity';
 
 export type DeveloperDocument = Developer & Document;
 
+export class SexProps {
+  id: string;
+  name: string;
+}
+
 @Schema()
 export class Developer {
   @Prop()
@@ -13,7 +18,7 @@ export class Developer {
   level: Level;
 
   @Prop()
-  sex: string;
+  sex: SexProps;
 
   @Prop()
   birthday: string;
